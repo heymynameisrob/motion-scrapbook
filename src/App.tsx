@@ -22,16 +22,10 @@ export function App() {
           )}
         </Button>
       </div>
-      <Section
-        title="Toggle theme"
-        deps={["motion", "radix-ui", "react-hook-form", "tailwindcss"]}
-      >
+      <Section title="Toggle theme">
         <Form />
       </Section>
-      <Section
-        title="Toggle theme"
-        deps={["motion", "radix-ui", "react-hook-form", "tailwindcss"]}
-      >
+      <Section title="Toggle theme">
         <Form />
       </Section>
     </main>
