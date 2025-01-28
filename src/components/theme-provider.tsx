@@ -37,7 +37,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     } else {
       document.documentElement.classList.toggle("dark", theme === "dark");
     }
-  }, [theme]);
+    if (!localStorage.getItem("theme")) {
+      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+      const isDark = mediaQuery.matches;
+      handleSetTheme(isDark ? "dark" : "light");
+    }
+  }, [theme, handleSetTheme]);
 
   /** Don't trigger animations on theme change */
   React.useEffect(() => {

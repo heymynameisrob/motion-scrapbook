@@ -22,10 +22,7 @@ export function App() {
           )}
         </Button>
       </div>
-      <Section title="Toggle theme">
-        <Form />
-      </Section>
-      <Section title="Toggle theme">
+      <Section title="Form submit">
         <Form />
       </Section>
     </main>
