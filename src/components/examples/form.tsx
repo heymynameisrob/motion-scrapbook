@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { AnimatePresence, m } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/primitives/button";
 import {
@@ -91,7 +91,7 @@ export function Form() {
           )}
         >
           <AnimatePresence mode="popLayout" initial={false}>
-            <m.span
+            <motion.span
               initial={{ opacity: 0, y: -20, filter: "blur(4px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               exit={{ opacity: 0, y: 20, filter: "blur(4px)" }}
@@ -99,7 +99,7 @@ export function Form() {
               className="drop-shadow-sm"
             >
               {content}
-            </m.span>
+            </motion.span>
           </AnimatePresence>
         </Button>
         <FormMessage
