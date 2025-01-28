@@ -1,10 +1,11 @@
+import { motion } from "motion/react";
+import { DynamicIsland } from "@/components/examples/dynamic-island";
 import { Form } from "@/components/examples/form";
 import { MultiStep } from "@/components/examples/multi-step";
 import { TabsClipPath } from "@/components/examples/tabs";
 import { TrashAnimation } from "@/components/examples/trash-animation";
 import { Header } from "@/components/header";
 import { Section } from "@/components/section";
-import { motion } from "motion/react";
 
 export function App() {
   return (
@@ -50,6 +51,11 @@ export function App() {
           <MotionDiv>
             <Section title="Trash">
               <TrashAnimation />
+            </Section>
+          </MotionDiv>
+          <MotionDiv>
+            <Section title="Dynamic Island">
+              <DynamicIsland />
             </Section>
           </MotionDiv>
         </motion.div>
