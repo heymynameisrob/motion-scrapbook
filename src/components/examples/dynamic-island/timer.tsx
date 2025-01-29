@@ -97,10 +97,10 @@ function Counter({ paused }: { paused?: boolean }) {
           <motion.div
             className="inline-block tabular-nums"
             key={n + i}
-            initial={{ y: -12, filter: "blur(4px)", opacity: 0 }}
-            animate={{ y: "0", filter: "blur(0px)", opacity: 1 }}
-            exit={{ y: 12, filter: "blur(4px)", opacity: 0 }}
-            transition={{ type: "spring", bounce: 0.4 }}
+            initial={{ y: -12, filter: "blur(2px)", opacity: 0, scale: 0.85 }}
+            animate={{ y: 0, filter: "blur(0px)", opacity: 1, scale: 1 }}
+            exit={{ y: 12, filter: "blur(2px)", opacity: 0, scale: 0.85 }}
+            transition={{ type: "spring", bounce: 0.35 }}
           >
             {n}
           </motion.div>

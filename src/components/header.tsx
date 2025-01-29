@@ -7,11 +7,18 @@ export function Header() {
     <header className="flex items-center justify-between py-4">
       <div role="heading" className="flex flex-col gap-2">
         <h1 className="text-3xl">Motion Scrapbook</h1>
-        <div className="flex items-center gap-1">
+        <a
+          href="https://heymynameisrob.com"
+          target="_blank"
+          rel="noopener nofollow"
+          className="flex items-center gap-2"
+        >
           <Avatar />
-          <ScrambleText />
-          <div className="shrink-0 w-[4px] h-4 bg-primary animate-blink"></div>
-        </div>
+          <div className="flex items-center gap-1">
+            <ScrambleText />
+            <div className="shrink-0 w-[3px] h-4 bg-secondary animate-blink"></div>
+          </div>
+        </a>
       </div>
       <div className="flex items-center justify-end gap-2">
         <Actions />

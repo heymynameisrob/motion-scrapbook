@@ -6,6 +6,7 @@ import { TabsClipPath } from "@/components/examples/tabs";
 import { TrashAnimation } from "@/components/examples/trash-animation";
 import { Header } from "@/components/header";
 import { Section } from "@/components/section";
+import { MultiStepPopover } from "@/components/examples/popover";
 
 export function App() {
   return (
@@ -46,6 +47,11 @@ export function App() {
           <MotionDiv>
             <Section title="Tabs">
               <TabsClipPath />
+            </Section>
+          </MotionDiv>
+          <MotionDiv>
+            <Section title="Popover">
+              <MultiStepPopover />
             </Section>
           </MotionDiv>
           <MotionDiv>

@@ -33,20 +33,22 @@ export function DynamicIsland() {
   const [view, setView] = React.useState<View>("idle");
 
   /** Values are guess-work. Tried to match it from eye. */
+  /** The smaller the element the more bounce it needs. */
+  /** The bounce value is for what we're transitioning to so if the view is 'idle' the transition is for moving to 'timer' which should be the smaller value */
   const animationConfig = React.useMemo<AnimationConfig>(
     () => ({
       layoutTransition: {
         type: "spring",
-        bounce: 0.4,
+        bounce: view === "idle" ? 0.3 : 0.4,
       },
       contentTransition: {
         type: "spring",
-        bounce: 0.4,
+        bounce: view === "idle" ? 0.3 : 0.4,
       },
       initial: {
         scale: 0.9,
         opacity: 0,
-        filter: "blur(8px)",
+        filter: "blur(6px)",
         originX: 0.4,
         originY: 0.4,
       },
@@ -61,7 +63,7 @@ export function DynamicIsland() {
         },
       },
     }),
-    [],
+    [view],
   );
 
   const content = React.useMemo(() => {
@@ -71,7 +73,7 @@ export function DynamicIsland() {
       case "idle":
         return (
           <div className="flex items-center justify-end w-[120px] px-2 py-2">
-            <div className="flex items-center justify-center h-3 w-3 rounded-full bg-base-1">
+            <div className="flex items-center justify-center h-3 w-3 rounded-full bg-white/20 dark:bg-white/5">
               <div className="w-1 h-1 rounded-full bg-white/10" />
             </div>
           </div>
@@ -86,7 +88,7 @@ export function DynamicIsland() {
           layout
           transition={animationConfig.layoutTransition}
           style={{ borderRadius: 32 }}
-          className="mx-auto w-fit min-w-[100px] overflow-hidden rounded-full bg-black shadow-2xl"
+          className="mx-auto w-fit min-w-[100px] overflow-hidden rounded-full bg-black border border-white/5 shadow-2xl"
         >
           <motion.div
             transition={animationConfig.contentTransition}
@@ -111,14 +113,16 @@ function ExitingFloatingContent({ children, view }: FloatingContentProps) {
     exit: (transition: AnimationVariant) => ({
       ...transition,
       opacity: [1, 0],
-      filter: "blur(8px)",
+      filter: "blur(6px)",
     }),
   };
 
   const custom = {
-    scale: 0.6,
-    y: -6,
-    bounce: 0.4,
+    "timer-idle": {
+      scale: 0.6,
+      y: -6,
+      bounce: 0.3,
+    },
   };
 
   return (

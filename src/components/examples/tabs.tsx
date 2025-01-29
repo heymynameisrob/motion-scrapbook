@@ -67,7 +67,7 @@ export function TabsClipPath() {
 
           <div
             aria-hidden
-            className="absolute z-10 w-full overflow-hidden transition-all duration-150 ease-out"
+            className="absolute z-10 w-full overflow-hidden transition-all duration-200 ease-out"
             ref={containerRef}
           >
             <div className="relative flex justify-center gap-2 bg-primary text-background">

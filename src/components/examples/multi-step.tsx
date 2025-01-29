@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from "@/primitives/select";
 import { Slider } from "@/primitives/slider";
+import { toast } from "sonner";
 
 const variants = {
   initial: (direction: -1 | 1) => {
@@ -50,15 +51,6 @@ export function MultiStep() {
             index={currentIndex + 1}
             onQuestionValid={(valid) => setIsStepValid(valid)}
           />
-        );
-
-      case 3:
-        return (
-          <Step>
-            <StepTitle>Thanks for submitting</StepTitle>
-            <p className="text-sm text-secondary">We'll be in touch</p>
-            <Button onClick={() => setCurrentIndex(0)}>Go back</Button>
-          </Step>
         );
     }
   }, [currentIndex, setIsStepValid]);
@@ -107,11 +99,15 @@ export function MultiStep() {
             <Button
               disabled={!isStepValid}
               onClick={() => {
+                if (currentIndex === 2) {
+                  setCurrentIndex(0);
+                  return toast.success("Preferences submitted");
+                }
                 setCurrentIndex((prev) => prev + 1);
                 setIsStepValid(false);
               }}
             >
-              Next
+              {currentIndex === 2 ? "Submit" : "Next"}
             </Button>
           </div>
         )}
