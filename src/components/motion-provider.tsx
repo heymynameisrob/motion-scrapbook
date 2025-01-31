@@ -22,6 +22,7 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
   return (
     <SpeedContext.Provider value={{ speed, setSpeed }}>
       <MotionConfig
+        reducedMotion="user"
         transition={{
           type: "spring",
           bounce: 0,
