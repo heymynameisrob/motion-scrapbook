@@ -92,9 +92,21 @@ export function Form() {
         >
           <AnimatePresence mode="popLayout" initial={false}>
             <motion.span
-              initial={{ opacity: 0, y: -20, filter: "blur(4px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, y: 20, filter: "blur(4px)" }}
+              initial={{
+                opacity: 0,
+                transform: "translateY(-20px)",
+                filter: "blur(4px)",
+              }}
+              animate={{
+                opacity: 1,
+                transform: "translateY(0px)",
+                filter: "blur(0px)",
+              }}
+              exit={{
+                opacity: 0,
+                transform: "translateY(20px)",
+                filter: "blur(4px)",
+              }}
               key={state}
               className="drop-shadow-sm"
             >

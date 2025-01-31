@@ -45,7 +45,7 @@ export function TabsClipPath() {
             <TabsTrigger
               key={tab.name}
               value={tab.name}
-              className="data-[state=active]:text-background"
+              className="data-[state=active]:text-background transform-gpu"
               ref={(element) => {
                 if (element) {
                   triggerRefs.current.set(tab.name, element);

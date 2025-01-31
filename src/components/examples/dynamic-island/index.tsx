@@ -46,14 +46,14 @@ export function DynamicIsland() {
         bounce: view === "idle" ? 0.3 : 0.4,
       },
       initial: {
-        scale: 0.9,
+        transform: "scale(0.9)",
         opacity: 0,
         filter: "blur(6px)",
         originX: 0.4,
         originY: 0.4,
       },
       animate: {
-        scale: 1,
+        transform: "scale(1)",
         opacity: 1,
         filter: "blur(0px)",
         originX: 0.4,
@@ -119,8 +119,7 @@ function ExitingFloatingContent({ children, view }: FloatingContentProps) {
 
   const custom = {
     "timer-idle": {
-      scale: 0.6,
-      y: -6,
+      transform: "scale(0.6) translateY(-6px)",
       bounce: 0.3,
     },
   };

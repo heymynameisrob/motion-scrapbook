@@ -258,14 +258,14 @@ export function TrashContainer({
   const { speed } = useAnimationSpeed();
 
   const trashButtonVariants = {
-    initial: { scale: 1.2, opacity: 0, filter: "blur(4px)" },
-    animate: { scale: 1, opacity: 1, filter: "blur(0px)" },
+    initial: { transform: "scale(1.2)", opacity: 0, filter: "blur(4px)" },
+    animate: { transform: "scale(1)", opacity: 1, filter: "blur(0px)" },
     transition: { duration: 0.2 * (1 / speed), bounce: 0, type: "spring" },
   };
 
   const imageVariants = {
     animate: (isRemoved: boolean) => ({
-      y: isRemoved ? 110 : 75,
+      transform: `translateY(${isRemoved ? 110 : 75}px)`,
       scale: isRemoved ? 0.7 : 1,
       filter: isRemoved ? "blur(4px)" : "blur(0px)",
       transition: isRemoved
@@ -293,9 +293,21 @@ export function TrashContainer({
         {status === "ready" || status === "removed" ? (
           <div className="absolute top-1/2 z-10 h-[114px] w-24 -translate-y-1/2">
             <motion.div
-              initial={{ scale: 1.2, filter: "blur(4px)", opacity: 0 }}
-              animate={{ scale: 1, filter: "blur(0px)", opacity: 1 }}
-              exit={{ scale: 1.2, filter: "blur(4px)", opacity: 0 }}
+              initial={{
+                transform: "scale(1.2)",
+                filter: "blur(4px)",
+                opacity: 0,
+              }}
+              animate={{
+                transform: "scale(1)",
+                filter: "blur(0px)",
+                opacity: 1,
+              }}
+              exit={{
+                transform: "scale(1.2)",
+                filter: "blur(4px)",
+                opacity: 0,
+              }}
             >
               <TrashBack />
             </motion.div>

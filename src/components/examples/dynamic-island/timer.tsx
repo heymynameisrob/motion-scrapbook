@@ -31,7 +31,7 @@ function TimerButton({ isPaused, onToggle }: TimerButtonProps) {
     <motion.button
       aria-label={isPaused ? "Start timer" : "Pause timer"}
       onClick={onToggle}
-      whileTap={{ scale: 0.9 }}
+      whileTap={{ transform: "scale(0.9)" }}
       className="flex h-10 w-10 items-center justify-center rounded-full bg-[#5A3C07] transition-colors hover:bg-[#694608]"
     >
       <AnimatePresence initial={false} mode="wait">
@@ -97,9 +97,21 @@ function Counter({ paused }: { paused?: boolean }) {
           <motion.div
             className="inline-block tabular-nums"
             key={n + i}
-            initial={{ y: -12, filter: "blur(2px)", opacity: 0, scale: 0.85 }}
-            animate={{ y: 0, filter: "blur(0px)", opacity: 1, scale: 1 }}
-            exit={{ y: 12, filter: "blur(2px)", opacity: 0, scale: 0.85 }}
+            initial={{
+              transform: "translateY(-12px) scale(0.85)",
+              filter: "blur(2px)",
+              opacity: 0,
+            }}
+            animate={{
+              transform: "translateY(0px) scale(1)",
+              filter: "blur(0px)",
+              opacity: 1,
+            }}
+            exit={{
+              transform: "translateY(12px) scale(0.85)",
+              filter: "blur(2px)",
+              opacity: 0,
+            }}
             transition={{ type: "spring", bounce: 0.35 }}
           >
             {n}
@@ -114,9 +126,9 @@ function Counter({ paused }: { paused?: boolean }) {
 const PlayIcon = () => (
   <motion.svg
     key="play"
-    initial={{ opacity: 0, scale: 0.5, filter: "blur(4px)" }}
-    animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-    exit={{ opacity: 0, scale: 0.5, filter: "blur(4px)" }}
+    initial={{ opacity: 0, transform: "scale(0.5)", filter: "blur(4px)" }}
+    animate={{ opacity: 1, transform: "scale(1)", filter: "blur(0px)" }}
+    exit={{ opacity: 0, transform: "scale(0.5)", filter: "blur(4px)" }}
     transition={{ duration: 0.1 }}
     viewBox="0 0 12 14"
     fill="none"

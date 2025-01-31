@@ -16,11 +16,11 @@ import { toast } from "sonner";
 
 const variants = {
   initial: (direction: -1 | 1) => {
-    return { x: `${110 * direction}%`, opacity: 0 };
+    return { transform: `translateX(${110 * direction}%)`, opacity: 0 };
   },
-  active: { x: "0%", opacity: 1 },
+  active: { transform: "translateX(0%)", opacity: 1 },
   exit: (direction: -1 | 1) => {
-    return { x: `${-110 * direction}%`, opacity: 0 };
+    return { transform: `translateX(${-110 * direction}%)`, opacity: 0 };
   },
 };
 
