@@ -19,9 +19,10 @@ A simple React + Vite app with Tailwind 4 and a few other bits. Everything impor
 - Looping animations should pause when not visible on the screen to offload CPU and GPU usage
 - Switching themes should not trigger transitions and animations on elements.
 - Use `scroll-behavior: smooth` for navigating to in-page anchors, with an appropriate offset
-- Animate composite properties like `transform` and `opacity` over layout or paint properties (e.g. `height` or `width`) [^1]
+- Stick to animating composite properties like `transform` and `opacity`. If you animate anything else, test a lot. [^1]
 - Animations should run at ~60fps to feel fluid and smooth
 - Use `will-change:transform|opacity...` or `transform: translateZ(0)` on heavy animations [^2]
+- Test your animations on low-powered or throttled devices
 
 ### Accessibility
 - Always respect `prefers-reduced-motion`. Bonus points for offering using control to toggle this on/off.
@@ -31,12 +32,14 @@ A simple React + Vite app with Tailwind 4 and a few other bits. Everything impor
 - Pause looping animations on keyboard focus [^3]
 
 ### Design
-- Think about motion as if the elements were physical objects. Respect origin, gravity etc.
-- Spring-based animations make animations feels higher-polished but can be distracting if too much
+- Animations can add delight to an interface or tell a story abotu what's happening.
 - Use motion sparingly. Actions that are frequent and low in novelty should avoid extraneous animations:
     - Opening a right click menu
     - Deleting or adding items from a list
     - Hovering trivial buttons
+- Tailor your animations to your aesthetic. Slower, softer animations are more cinematic. Snappier animations are more delightful and fun.
+- Think about motion as if the elements were physical objects. Respect origin, gravity etc.
+- Spring-based animations make an interface feel highly polished and well-built.
 - Animation values should be proportional to the trigger size:
     - Don't animate dialog scale in from 0 → 1, fade opacity and scale from ~0.8
     - Don't scale buttons on press from 1 → 0.8, but ~0.96, ~0.9, or so
@@ -48,25 +51,10 @@ A simple React + Vite app with Tailwind 4 and a few other bits. Everything impor
 :root {
   --ease-in: cubic-bezier(0.55, 0.055, 0.675, 0.19);
 
-  --ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
-  --ease-in-quart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
-  --ease-in-quint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-  --ease-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
-  --ease-in-circ: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-
   --ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
-  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
-  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
-  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
-  --ease-out-circ: cubic-bezier(0.075, 0.82, 0.165, 1);
 
   --ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
-  --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
-  --ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
-  --ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
-  --ease-in-out-circ: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
 }
 ```
 
